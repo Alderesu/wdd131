@@ -1,0 +1,67 @@
+:root {
+    --primary-color: #000000;
+    --secondary-color: #3f3939;
+    --accent1-color: #6b6b6b;
+    --background-color: #ffffff;
+    --heading-font: 'Poppins', serif;
+    --text-font: 'Inter', sans-serif;
+}
+
+body {  
+    grid-template-rows: auto 1fr auto;
+    margin: 0;  
+    font-family: var(--text-font);  
+    color: white;  
+}  
+
+header {  
+    display: block;
+    background-color: #000;  
+    padding: 20px;  
+    text-align: left; 
+}  
+
+nav {  
+    display: flex;  
+    justify-content: space-around;  
+    background-color: #000; 
+}  
+
+nav a {  
+    color: white;  
+    padding: 15px 20px;  
+    text-decoration: none;  
+    font-weight: bold;  
+    text-align: center;
+}  
+
+main {  
+    display: grid;  
+    grid-template-columns: 2fr 1fr;
+    padding: 20px;
+}  
+
+section {  
+    background-color: var(--accent1-color);  
+    padding: 20px;    
+}  
+
+aside {
+    color: black;  
+    width: 200px;  
+    background-color: #fff;  
+    padding: 20px;  
+}  
+
+.table {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+}
+
+footer {
+    background-color: var(--accent1-color);
+    padding-top: 4px;
+    padding-bottom: 7.5rem;
+    display: flex;
+    justify-content: center;
+}
