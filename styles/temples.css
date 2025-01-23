@@ -112,7 +112,7 @@ header h1 {
 
 .navigation a:hover {
     color: var(--accent3-color-Platinum);
-    text-decoration: none;
+    text-decoration: underline;
     transition: all 5ms ease-in-out;
     font-weight: bold;
 }
