@@ -54,8 +54,11 @@ p {
     width: 200px;
     height: 30px;
     background-color: var(--indigo-dye);
-    color: var(--white);
     text-align: center;
+}
+
+.headerEx p, .footerEx p {
+    color: white;
 }
 
 img {
