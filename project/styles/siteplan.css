@@ -57,8 +57,9 @@ p {
     text-align: center;
 }
 
-.headerEx p, .footerEx p {
-    color: white;
+.headerEx p, 
+.footerEx p {
+    color: var(--white);
 }
 
 img {
