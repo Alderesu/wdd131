@@ -1,0 +1,63 @@
+:root {
+    /* CSS HEX */
+    --oxford-blue: #0a1128ff;
+    --penn-blue: #001f54ff;
+    --indigo-dye: #034078ff;
+    --cerulean: #1282a2ff;
+    --white: #fefcfbff;
+
+    --inter-regular-font-family: "Inter", sans-serif;
+    --inter-regular-font-weight: 400;
+    --inter-regular-font-style: normal;
+
+    --poppins-regular-font-family: "Poppins", sans-serif;
+    --poppins-regular-font-weight: 400;
+    --poppins-regular-font-style: normal;
+
+
+}
+
+body {
+    font-family: var(--poppins-regular-font-family);
+    display: grid;
+    place-items: center;
+
+}
+
+h2 {
+    color: var(--penn-blue);
+}
+
+p {
+    color: var(--oxford-blue);
+}
+
+
+.titleEx, 
+.headfoot {
+    font-family: var(--poppins-regular-font-family);
+    color: green;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.paragraphEx {
+    font-family: var(--inter-regular-font-family);
+    color: green;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+.headerEx,
+.footerEx {
+    width: 200px;
+    height: 30px;
+    background-color: var(--indigo-dye);
+    color: var(--white);
+    text-align: center;
+}
+
+img {
+    width: 25%;
+}
