@@ -16,9 +16,11 @@ document.addEventListener('DOMContentLoaded', function () {
             selectElement.appendChild(option);
         });
     }
-
-    if (localStorage.getItem('reviewCount') === null) {
-        localStorage.setItem('reviewCount', 0);
-    }
-
 });
+
+if (window.location.pathname.includes("review.html")) {
+    let reviewCount = localStorage.getItem("reviewCount");
+    reviewCount = reviewCount ? parseInt(reviewCount) + 1 : 1;
+    localStorage.setItem("reviewCount", reviewCount);
+    document.body.innerHTML = `<h1>Thank you for your review!</h1><p>You have submitted ${reviewCount} reviews.</p>`;
+}
