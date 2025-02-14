@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Review Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .review {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Product Review Form</h1>
+    <form id="reviewForm">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" required><br><br>
+        
+        <label for="rating">Rating (1-5):</label><br>
+        <input type="number" id="rating" min="1" max="5" required><br><br>
+        
+        <label for="review">Review:</label><br>
+        <textarea id="review" rows="4" required></textarea><br><br>
+        
+        <button type="submit">Submit Review</button>
+    </form>
+
+    <h2>Reviews</h2>
+    <div id="reviewsContainer"></div>
+
+    <script src="scripts/practice.js"></script>
+</body>
+</html>
