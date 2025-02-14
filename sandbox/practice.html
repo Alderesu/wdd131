@@ -3,38 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Review Form</title>
+    <title>Contact Us</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
         }
-        .review {
+        .message {
             border: 1px solid #ccc;
             padding: 10px;
             margin: 10px 0;
+            border-radius: 5px;
         }
     </style>
 </head>
 <body>
 
-    <h1>Product Review Form</h1>
-    <form id="reviewForm">
-        <label for="name">Name:</label><br>
-        <input type="text" id="name" required><br><br>
-        
-        <label for="rating">Rating (1-5):</label><br>
-        <input type="number" id="rating" min="1" max="5" required><br><br>
-        
-        <label for="review">Review:</label><br>
-        <textarea id="review" rows="4" required></textarea><br><br>
-        
-        <button type="submit">Submit Review</button>
-    </form>
+    <main class="container-contact">
+        <section class="contact-box">
+            <h1>Contact Us</h1>
+            <form id="contactForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="user_name" required /><br><br>
+                
+                <label for="mail">Email:</label>
+                <input type="email" id="mail" name="user_email" required /><br><br>
+                
+                <label for="msg">Message:</label>
+                <textarea id="msg" name="user_message" required></textarea><br><br>
+                
+                <button type="submit">Send your message</button>
+            </form>
+            <h2>Submitted Messages</h2>
+            <div id="messagesContainer"></div>
+        </section>
+    </main>
 
-    <h2>Reviews</h2>
-    <div id="reviewsContainer"></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const contactForm = document.getElementById('contactForm');
+            const messagesContainer = document.getElementById('messagesContainer');
 
-    <script src="scripts/practice.js"></script>
+            // Load existing messages from localStorage
+            loadMessages();
+
+            contactForm.addEventListener('submit', (event) => {
+                event.preventDefault();
+
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('mail').value;
+                const message = document.getElementById('msg').value;
+
+                const messageData = {
+                    name: name,
+                    email: email,
+                    message: message
+                };
+
+                // Save message to localStorage
+                saveMessage(messageData);
+
+                // Clear the form
+                contactForm.reset();
+
+                // Load messages again to display the new one
+                loadMessages();
+            });
+
+            function saveMessage(message) {
+                let messages = JSON.parse(localStorage.getItem('messages')) || [];
+                messages.push(message);
+                localStorage.setItem('messages', JSON.stringify(messages));
+            }
+
+            function loadMessages() {
+                messagesContainer.innerHTML = ''; // Clear existing messages
+                const messages = JSON.parse(localStorage.getItem('messages')) || [];
+
+                messages.forEach((msg) => {
+                    const messageDiv = document.createElement('div');
+                    messageDiv.classList.add('message');
+                    messageDiv.innerHTML = `
+                        <strong>${msg.name}</strong> (${msg.email})<br>
+                        <p>${msg.message}</p>
+                    `;
+                    messagesContainer.appendChild(messageDiv);
+                });
+            }
+        });
+    </script>
+
 </body>
 </html>

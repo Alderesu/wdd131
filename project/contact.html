@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="../project/styles/style.css">
     <link rel="stylesheet" href="../project/styles/style-large.css">
     <link rel="stylesheet" href="../project/styles/contact.css">
-
 </head>
 
 <body>
@@ -22,7 +21,7 @@
         <img src="../project/images/aldrich-logo.png" alt="Logo Kyle Moran">
         <button id="menu"></button>
         <nav class="navigation">
-            <a  href="../project/index.html">Home</a>
+            <a href="../project/index.html">Home</a>
             <a href="../project/projects.html">Projects</a>
             <a href="../project/contact.html">Contact</a>
         </nav>
@@ -34,7 +33,7 @@
                 <img src="../project/images/Contact-us-header.png" alt="Contact us header image">
             </div>
             <div class="form-container">
-                <form action="../project/my-handling-form-page" method="post">
+                <form id="contactForm" method="post">
                     <h1>Contact us</h1>
                     <ul>
                         <li>
@@ -77,6 +76,29 @@
         </div>
     </footer>
     <script src="../project/scripts/base.js" defer></script>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('mail').value;
+            const message = document.getElementById('msg').value;
+
+            const messageData = {
+                name: name,
+                email: email,
+                message: message
+            };
+
+            // Save message to localStorage
+            let messages = JSON.parse(localStorage.getItem('messages')) || [];
+            messages.push(messageData);
+            localStorage.setItem('messages', JSON.stringify(messages));
+
+            // Redirect to contact-form.html
+            window.location.href = '../project/contact-form.html';
+        });
+    </script>
 </body>
 
 </html>

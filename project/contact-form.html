@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Form Handling Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .message {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Submitted Messages</h2>
+    <div id="messagesContainer"></div>
+
+    <h2>Visit Information</h2>
+    <div id="visitInfo"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const messagesContainer = document.getElementById('messagesContainer');
+
+            // Load existing messages from localStorage
+            loadMessages();
+            recordVisitData();
+
+            function loadMessages() {
+                messagesContainer.innerHTML = ''; // Clear existing messages
+                const messages = JSON.parse(localStorage.getItem('messages')) || [];
+
+                messages.forEach((msg) => {
+                    const messageDiv = document.createElement('div');
+                    messageDiv.classList.add('message');
+                    messageDiv.innerHTML = `
+                        <strong>${msg.name}</strong> (${msg.email})<br>
+                        <p>${msg.message}</p>
+                    `;
+                    messagesContainer.appendChild(messageDiv);
+                });
+            }
+
+            function recordVisitData() {
+                // Record visit information
+                let visitCount = localStorage.getItem('visit_count') ? parseInt(localStorage.getItem('visit_count')) : 0;
+                visitCount++;
+                localStorage.setItem('visit_count', visitCount);
+
+                const timestamp = new Date().toISOString();
+                localStorage.setItem('last_visit', timestamp);
+
+                // Display visit information
+                const visitInfo = document.getElementById('visitInfo');
+                visitInfo.innerHTML = `
+                    <p><strong>Number of Visits:</strong> ${visitCount}</p>
+                    <p><strong>Last Visit Timestamp:</strong> ${timestamp}</p>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>
